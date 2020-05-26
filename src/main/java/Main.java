@@ -37,8 +37,8 @@ class DiscordGameInfo {
 }
 
 public class Main {
-    int period = 3; // seconds
-    boolean use_cached_json = true;
+    int period = 10; // seconds
+    boolean use_cached_json = false;
     boolean online = true;
 
     boolean use_test_channel = true;
