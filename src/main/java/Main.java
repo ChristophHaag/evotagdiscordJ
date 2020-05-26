@@ -79,6 +79,10 @@ public class Main {
 
     void update_games() {
         ArrayList<WarcraftGameInfo> wc3stats_games = wc3stats.get_evo_tag_games();
+        if (wc3stats_games == null) {
+            System.out.println("Failed to update games");
+            return;
+        }
 
         for (Integer key : current_games.keySet()) {
             boolean still_current = false;

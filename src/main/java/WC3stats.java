@@ -3,6 +3,7 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -46,6 +47,11 @@ public class WC3stats {
 
     ArrayList<WarcraftGameInfo> get_evo_tag_games() {
         String html = get_html();
+
+        if (html == null) {
+            System.out.println("Failed to get json from wc3stats");
+            return null;
+        }
 
         //System.out.println(html);
 
