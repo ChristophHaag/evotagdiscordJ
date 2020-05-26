@@ -40,8 +40,7 @@ public class Main {
     int period = 10; // seconds
     boolean use_cached_json = false;
     boolean online = true;
-
-    boolean use_test_channel = true;
+    boolean use_test_channel = false;
 
     Server server;
     ServerTextChannel channel;
