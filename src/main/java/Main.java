@@ -111,9 +111,6 @@ public class Main {
 
         for (WarcraftGameInfo info : wc3stats_games) {
 
-            String game_str = game_info_to_string(info);
-            //CompletableFuture<Message> message = channel.sendMessage(msg_str);
-
             if (current_games.containsKey(info.id)) {
                 DiscordGameInfo dgi = current_games.get(info.id);
                 dgi.info = info;
@@ -134,6 +131,8 @@ public class Main {
             } else {
                 DiscordGameInfo dgi = new DiscordGameInfo();
 
+                String game_str = game_info_to_string(info);
+                System.out.println("New game: " + game_str);
                 CompletableFuture<Message> message = channel.sendMessage(game_str);
 
                 dgi.info = info;
