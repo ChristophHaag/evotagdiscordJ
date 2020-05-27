@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -56,7 +57,14 @@ public class WC3stats {
         //System.out.println(html);
 
         Gson g = new Gson();
-        WarcraftGameList list = g.fromJson(html, WarcraftGameList.class);
+        WarcraftGameList list = null;
+        try {
+            list = g.fromJson(html, WarcraftGameList.class);
+        } catch (JsonSyntaxException e) {
+            System.out.println("json syntax exception on\n" + html);
+            e.printStackTrace();
+            return null;
+        }
 
         System.out.println("Parsed list, status " + list.status);
 
