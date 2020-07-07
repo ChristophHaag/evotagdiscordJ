@@ -144,9 +144,9 @@ public class Main {
         }
     }
 
-    void run_bot() {
+    void run_bot(String servername, String channelname) {
 
-        Collection<Server> servers = api.getServersByName("Evo Tag");
+        Collection<Server> servers = api.getServersByName(servername);
         if (servers.size() == 1) {
             server = servers.iterator().next();
             System.out.println("Using server " + server.toString());
@@ -155,7 +155,7 @@ public class Main {
             return;
         }
 
-        String channel_name = "hosted-games";
+        String channel_name = channelname;
         if (use_test_channel)
             channel_name = "bot-test";
 
@@ -217,8 +217,16 @@ public class Main {
             return;
         }
 
+        String servername = "Evo Tag";
+        String channelname = "hosted-games";
+        if (args.length > 2) {
+            servername = args[1];
+            channelname = args[2];
+            System.out.println("Using Servername " + servername + ", channelname " + channelname);
+        }
+
         Main m = new Main(token);
-        m.run_bot();
+        m.run_bot(servername, channelname);
     }
 
 }
