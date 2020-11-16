@@ -152,6 +152,17 @@ public class Main {
             System.out.println("Using server " + server.toString());
         } else {
             System.out.println("Use a more specific server name!");
+            System.out.println("Available (filtered):");
+            for (Server s : servers) {
+                System.out.println("\t" + s.toString());
+            }
+
+            servers = api.getServersByName(servername);
+            System.out.println("Available (all):");
+            for (Server s : servers) {
+                System.out.println("\t" + s.toString());
+            }
+
             return;
         }
 
